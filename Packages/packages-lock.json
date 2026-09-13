@@ -7,7 +7,7 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0"
       },
-      "hash": "9a7535a3fad66ebec5458a8b22f6ad023c960fd3"
+      "hash": "4d00ad8c608bf42c8668fdf192130fc16e21a130"
     },
     "com.coffee.ui-effect": {
       "version": "https://github.com/mob-sakai/UIEffect.git?path=Packages/src",
@@ -16,7 +16,7 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0"
       },
-      "hash": "ef7ac0aaad7e8d60415e9348c9d84b32cc3a6437"
+      "hash": "ff824c234121cd6dde7038c8e8ca4904d7f4d7f3"
     },
     "com.coffee.ui-particle": {
       "version": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
@@ -26,7 +26,7 @@
         "com.unity.ugui": "1.0.0",
         "com.unity.modules.particlesystem": "1.0.0"
       },
-      "hash": "c54f63cb18a22382215b142b63e232f0f86fff58"
+      "hash": "eec288e2a5cfd43743b70e9a8c397d5e5300e80a"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -140,15 +140,6 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
-    },
-    "com.unity.ides": {
-      "version": "https://github.com/dunward/com.unity.ides.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.test-framework": "1.1.9"
-      },
-      "hash": "6d02147fb5181de0b39db25efb599b16d8d67ef5"
     },
     "com.unity.inputsystem": {
       "version": "1.20.0",

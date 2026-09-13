@@ -78,3 +78,13 @@ crashlytics-build.properties
 Assets/CustomReferenceCache.asset
 Assets/CustomReferenceCache.asset.meta
 /Assets/Layer Lab
+
+# Local OS/editor noise
+.DS_Store
+.vscode/
+*.orig
+*.rej
+*.bak
+
+# Local migration backups
+/Packages/packages-lock.pre-*.json

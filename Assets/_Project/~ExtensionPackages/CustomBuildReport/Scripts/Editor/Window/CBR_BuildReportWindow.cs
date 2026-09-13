@@ -2226,16 +2226,16 @@ public class BRT_BuildReportWindow : EditorWindow
 					TextureDataTooltipLabel.text = string.Format("{0} ({1}) {2} (source: {3})",
 						data[assetPath].TextureType,
 						data[assetPath].GetShownTextureFormat(),
-						data[assetPath].ToDisplayedValue(TextureData.DataId.ImportedWidthAndHeight),
-						data[assetPath].ToDisplayedValue(TextureData.DataId.RealWidthAndHeight));
+						data[assetPath].ToDisplayedValue(CustomBuildReport.TextureData.DataId.ImportedWidthAndHeight),
+						data[assetPath].ToDisplayedValue(CustomBuildReport.TextureData.DataId.RealWidthAndHeight));
 				}
 				else
 				{
 					TextureDataTooltipLabel.text = string.Format("{0} ({1})\n{2} (source: {3})",
 						data[assetPath].TextureType,
 						data[assetPath].GetShownTextureFormat(),
-						data[assetPath].ToDisplayedValue(TextureData.DataId.ImportedWidthAndHeight),
-						data[assetPath].ToDisplayedValue(TextureData.DataId.RealWidthAndHeight));
+						data[assetPath].ToDisplayedValue(CustomBuildReport.TextureData.DataId.ImportedWidthAndHeight),
+						data[assetPath].ToDisplayedValue(CustomBuildReport.TextureData.DataId.RealWidthAndHeight));
 				}
 			}
 			else
@@ -2243,7 +2243,7 @@ public class BRT_BuildReportWindow : EditorWindow
 				TextureDataTooltipLabel.text = string.Format("{0} ({1}) {2}",
 					data[assetPath].TextureType,
 					data[assetPath].GetShownTextureFormat(),
-					data[assetPath].ToDisplayedValue(TextureData.DataId.ImportedWidthAndHeight));
+					data[assetPath].ToDisplayedValue(CustomBuildReport.TextureData.DataId.ImportedWidthAndHeight));
 			}
 
 			labelSize = labelStyle.CalcSize(TextureDataTooltipLabel);

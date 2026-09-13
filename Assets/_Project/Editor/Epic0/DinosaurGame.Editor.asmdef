@@ -1,0 +1,7 @@
+{
+  "name": "DinosaurGame.Editor",
+  "rootNamespace": "DinosaurGame.Editor",
+  "references": ["DinosaurGame.Core", "DinosaurGame.Gameplay", "DinosaurGame.UI"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}

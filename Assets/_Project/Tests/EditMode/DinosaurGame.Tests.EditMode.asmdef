@@ -1,0 +1,8 @@
+{
+  "name": "DinosaurGame.Tests.EditMode",
+  "rootNamespace": "DinosaurGame.Tests",
+  "references": ["DinosaurGame.Core", "DinosaurGame.Gameplay"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": false
+}

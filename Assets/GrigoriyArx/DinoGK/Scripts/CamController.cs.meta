@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c48f0101f97e1db4cb78af77184ece2a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265297
+  packageName: Dinosaurus Pack with Babies
+  packageVersion: 1.01
+  assetPath: Assets/GrigoriyArx/DinoGK/Scripts/CamController.cs
+  uploadId: 634112

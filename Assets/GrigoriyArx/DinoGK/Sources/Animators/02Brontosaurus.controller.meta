@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e157acf6bfe6fae49b34c9aae7b5e1ac
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 265297
+  packageName: Dinosaurus Pack with Babies
+  packageVersion: 1.01
+  assetPath: Assets/GrigoriyArx/DinoGK/Sources/Animators/02Brontosaurus.controller
+  uploadId: 634112

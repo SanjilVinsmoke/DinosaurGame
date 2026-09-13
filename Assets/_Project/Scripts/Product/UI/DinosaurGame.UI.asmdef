@@ -1,0 +1,6 @@
+{
+  "name": "DinosaurGame.UI",
+  "rootNamespace": "DinosaurGame.UI",
+  "references": ["DinosaurGame.Core", "DinosaurGame.Gameplay"],
+  "autoReferenced": true
+}

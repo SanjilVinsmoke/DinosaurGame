@@ -4,24 +4,33 @@ using UnityEngine;
 public class LevelController : SingletonDontDestroy<LevelController>
 {
     [SerializeField] private LevelConfig levelConfig;
+    [SerializeField] private LevelCatalog levelCatalog;
     [ReadOnly] public Level currentLevel;
 
-    public void PrepareLevel()
+    public bool PrepareLevel()
     {
-        GenerateLevel(Data.PlayerData.CurrentLevelIndex);
+        return GenerateLevel(Data.PlayerData.CurrentLevelIndex);
     }
 
-    public void GenerateLevel(int indexLevel)
+    public bool GenerateLevel(int indexLevel)
     {
         if (currentLevel != null)
         {
-            DestroyImmediate(currentLevel.gameObject);
+            Destroy(currentLevel.gameObject);
+            currentLevel = null;
         }
 
         Level level = GetLevelByIndex(indexLevel);
+        if (level == null)
+        {
+            Debug.LogWarning($"[LegacyPrototype] No explicit level reference for level {indexLevel}. Legacy level generation skipped.", this);
+            return false;
+        }
+
         currentLevel = Instantiate(level);
         currentLevel.gameObject.SetActive(false);
         currentLevel.name = indexLevel > levelConfig.maxLevel ? $"Level {indexLevel} - {currentLevel.name}" : $"Level {indexLevel}";
+        return true;
     }
 
     public Level GetLevelByIndex(int indexLevel)
@@ -43,7 +52,9 @@ public class LevelController : SingletonDontDestroy<LevelController>
             indexLevel = (indexLevel - 1) % levelConfig.maxLevel + 1;
         }
 
-        if (Resources.Load($"Levels/Level {indexLevel}") is GameObject levelGo) return levelGo.GetComponent<Level>();
-        return null;
+        if (levelCatalog == null)
+            return null;
+
+        return levelCatalog.Get(indexLevel);
     }
 }

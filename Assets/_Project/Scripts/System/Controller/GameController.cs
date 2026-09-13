@@ -8,6 +8,6 @@ public class GameController : SingletonDontDestroy<GameController>
     protected override void Awake()
     {
         base.Awake();
-        IsTesting = gameConfig.isTesting;
+        IsTesting = gameConfig != null && gameConfig.isTesting;
     }
 }

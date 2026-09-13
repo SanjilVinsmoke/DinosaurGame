@@ -1,0 +1,6 @@
+{
+  "name": "DinosaurGame.Core",
+  "rootNamespace": "DinosaurGame.Core",
+  "references": [],
+  "autoReferenced": true
+}

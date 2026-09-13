@@ -40,10 +40,12 @@ public class PopupController : SingletonDontDestroy<PopupController>
     {
         Initialize();
         blockUI.SetBlockUIState(false);
-        if (gameConfig.isTesting)
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (gameConfig != null && gameConfig.isTesting)
         {
             InitializeDebugConsole();
         }
+#endif
         
         Observer.Notify += SpawnNotifyText;
     }
@@ -75,9 +77,12 @@ public class PopupController : SingletonDontDestroy<PopupController>
 
     public void InitializeDebugConsole()
     {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        if (popupConfig == null || popupConfig.popupDebugConsole == null || canvasTransform == null) return;
         PopupDebugConsole popupDebugConsole = Instantiate(popupConfig.popupDebugConsole, canvasTransform);
         popupDebugConsole.Canvas.sortingOrder = 999;
         popupDebugConsole.Show(PopupAnimation.None);
+#endif
     }
 
     public void Show<T>(PopupAnimation popupAnimation = PopupAnimation.None)

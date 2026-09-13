@@ -1,16 +1,18 @@
 using CustomTween;
+using DinosaurGame.Core;
+using DinosaurGame.Gameplay;
 using UnityEngine;
 
 public class GameManager : SingletonDontDestroy<GameManager>
 {
     public LevelController levelController;
     public GameState gameState;
+    public GameFlowMode flowMode { get; private set; } = GameFlowMode.Boot;
 
     protected override void Awake()
     {
         base.Awake();
-        Application.targetFrameRate = 60;
-        Input.multiTouchEnabled = true;
+        AppRuntime.Configure();
         CustomTweenConfig.warnZeroDuration = false;
     }
     
@@ -28,14 +30,25 @@ public class GameManager : SingletonDontDestroy<GameManager>
     public void PrepareLevel()
     {
         gameState = GameState.PrepareGame;
-        levelController.PrepareLevel();
+        if (levelController == null || !levelController.PrepareLevel())
+        {
+            Debug.LogWarning("[LegacyPrototype] Level flow is unavailable. Dinosaur product flow remains on Home.", this);
+        }
     }
 
     public void ReturnHome()
     {
-        PrepareLevel();
-        
-        SoundController.Instance.PlayBackground(SoundName.HomeBackgroundMusic);
+        flowMode = GameFlowMode.Home;
+
+        if (SoundController.Instance != null)
+            SoundController.Instance.PlayBackground(SoundName.HomeBackgroundMusic);
+
+        if (PopupController.Instance == null)
+        {
+            Debug.LogError("[Bootstrap] PopupController is missing; cannot present Home.", this);
+            return;
+        }
+
         PopupController.Instance.HideAll();
         PopupController.Instance.Show<PopupBackground>();
         PopupController.Instance.Show<PopupHome>();
@@ -43,6 +56,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
 
     public void ReplayGame()
     {
+        if (levelController == null) return;
         Observer.ReplayLevel?.Invoke(levelController.currentLevel);
         PrepareLevel();
         StartGame();
@@ -58,6 +72,7 @@ public class GameManager : SingletonDontDestroy<GameManager>
 
     public void NextLevel()
     {
+        if (levelController == null) return;
         Observer.SkipLevel?.Invoke(levelController.currentLevel);
         Data.PlayerData.CurrentLevelIndex++;
 
@@ -67,6 +82,13 @@ public class GameManager : SingletonDontDestroy<GameManager>
     
     public void StartGame()
     {
+        if (levelController == null || levelController.currentLevel == null)
+        {
+            Debug.LogWarning("[LegacyPrototype] StartGame ignored because no legacy level is prepared.", this);
+            ReturnHome();
+            return;
+        }
+
         gameState = GameState.PlayingGame;
         Observer.StartLevel?.Invoke(levelController.currentLevel);
         

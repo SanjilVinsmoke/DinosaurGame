@@ -12,7 +12,13 @@ public static class Utility
         var children = transform.childCount;
         for (int i = children - 1; i >= 0; i--)
         {
-            UnityEngine.Object.DestroyImmediate(transform.GetChild(i).gameObject, true);
+            var child = transform.GetChild(i).gameObject;
+            if (Application.isPlaying)
+                UnityEngine.Object.Destroy(child);
+#if UNITY_EDITOR
+            else
+                UnityEngine.Object.DestroyImmediate(child, true);
+#endif
         }
     }
     
